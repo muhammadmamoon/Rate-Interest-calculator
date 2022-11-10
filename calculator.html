@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interest Calculator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Interest Calculator</h1>
+        <div class="line"></div>
+        <h4>A = P(1 + rt)</h4>
+        <form action="#">
+            <h3>Enter Principal ($)</h3>
+            <input type="text" id="principal" placeholder="Enter amount without dollar sign">
+            <h3>Enter Rate Of Interest (%)</h3>
+            <input type="text" id="interest" placeholder="Example 12%">
+            <h3>Enter Years (yr)</h3>
+            <input type="tel" id="year" placeholder="Example: 2 (must be in terms of years)">
+            <button class="btn" id="button">
+                Calculate
+            </button>
+            <span id="resultInterest"></span>
+            <span id="finalAmount"></span>
+        </form>
+    </div>
+    <script>
+        principal = 0;
+        interest = 0;
+        amount = 0;
+        termOfloan = 0;
+        interestRate = 0;
+        let buttonclick = document.getElementById("button");
+        buttonclick.addEventListener("click", function() {
+            principal = parseFloat(document.getElementById("principal").value);
+            interestRate = parseFloat(document.getElementById("interest").value);
+            termOfloan = parseFloat(document.getElementById("year").value);
+
+            interestRate = interestRate / 100;
+            interest = principal * interestRate * termOfloan;
+            amount = (principal + interest).toFixed(2);
+
+            document.getElementById("resultInterest").innerHTML = "Total intrest $" + interest.toFixed(2);
+            document.getElementById("finalAmount").innerHTML = "final amount $" + principal + "+" + interest + "=" + amount;
+        })
+    </script>
+</body>
+
+</html>
